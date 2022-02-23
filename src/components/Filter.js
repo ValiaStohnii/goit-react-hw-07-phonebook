@@ -1,28 +1,22 @@
 import React from 'react';
-// import { useState } from 'react';
-import { useFilterContactMutation } from 'redux/slice/contactsSlice';
-
-// import { useSelector, useDispatch } from 'react-redux';
-// import { getFilter } from '../redux/contacts/contacts-selectors';
-// import contactsAction from '../redux/contacts/contacts-actions';
+import { useDispatch } from 'react-redux';
+import { filterContact } from 'redux/slice/filterSlice';
+import { useState } from 'react';
 
 const Filter = () => {
-  const [filterContact] = useFilterContactMutation();
-  //   const value = useSelector(getFilter);
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const [filter, setFilter] = useState('');
 
   const filterChange = e => {
-    filterContact(e.currentTarget.value);
+    console.log(e);
+    setFilter(e.currentTarget.value);
+    dispatch(filterContact(e.currentTarget.value));
   };
 
   return (
     <label>
       Filter
-      <input
-        type="text"
-        // value={value}
-        onChange={filterChange}
-      ></input>
+      <input type="text" value={filter} onChange={filterChange}></input>
     </label>
   );
 };

@@ -32,7 +32,7 @@ export const Form = () => {
         Name
         <input
           type="text"
-          //   value={name}
+          value={name}
           onChange={inputChange}
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -44,7 +44,7 @@ export const Form = () => {
         Number
         <input
           type="tel"
-          //   value={number}
+          value={number}
           onChange={inputChange}
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

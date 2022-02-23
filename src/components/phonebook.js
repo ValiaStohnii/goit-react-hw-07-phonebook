@@ -2,17 +2,25 @@ import { useFetchContactsQuery } from 'redux/slice/contactsSlice';
 import ContactList from './ContactList';
 import { Form } from './Form';
 import Filter from './Filter';
+import { useSelector } from 'react-redux';
 
 const Phonebook = () => {
   const { data: contacts } = useFetchContactsQuery();
+  const filter = useSelector(state => state.filter.filter);
 
+  const getFilteredContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(c =>
+      c.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
   return (
     <div>
       <h1>Phonebook</h1>
       <Form />
       <h2>Contacts</h2>
       <Filter />
-      {contacts && <ContactList contacts={contacts} />}
+      {contacts && <ContactList contacts={getFilteredContacts()} />}
     </div>
   );
 };
