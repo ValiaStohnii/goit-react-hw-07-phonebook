@@ -24,6 +24,12 @@ export const Form = () => {
   const submitNumber = e => {
     e.preventDefault();
     createContact({ name: name, number: number });
+    reset();
+  };
+
+  const reset = () => {
+    setName('');
+    setNumber('');
   };
 
   return (

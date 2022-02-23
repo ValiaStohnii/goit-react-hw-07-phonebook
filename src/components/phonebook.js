@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 const Phonebook = () => {
   const { data: contacts } = useFetchContactsQuery();
-  const filter = useSelector(state => state.filter.filter);
+  const filter = useSelector(state => state.filter);
 
   const getFilteredContacts = () => {
     const normalizedFilter = filter.toLowerCase();
@@ -14,6 +14,7 @@ const Phonebook = () => {
       c.name.toLowerCase().includes(normalizedFilter)
     );
   };
+
   return (
     <div>
       <h1>Phonebook</h1>

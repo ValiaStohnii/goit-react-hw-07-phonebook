@@ -3,7 +3,6 @@ import { nanoid } from 'nanoid';
 
 const initialState = {
   contacts: [],
-  // filter: '',
 };
 
 export const contactSlice = createSlice({
@@ -22,11 +21,9 @@ export const contactSlice = createSlice({
         user => user.id !== action.payload
       );
     },
-    //  filterContact: (_, {payload}) => payload,
   },
 });
 
 export const { addContact, deleteContact } = contactSlice.actions;
 export const contactSelector = state => state.contact.contacts;
-// export const filterSelector = state => state.contact.filter;
 export const contactReducer = contactSlice.reducer;
